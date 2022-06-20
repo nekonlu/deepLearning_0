@@ -1,6 +1,7 @@
 # coding: utf-8
 import numpy as np
 
+
 def numerical_gradient(f, x):
     h = 1e-4 # 0.0001
     grad = np.zeros_like(x)
@@ -20,3 +21,21 @@ def numerical_gradient(f, x):
         it.iternext()
 
     return grad
+
+# def numerical_gradient(f, x):
+#     h = 1e-4
+#
+#     x1 = x.copy()
+#     x2 = x.copy()
+#
+#     x1 += h
+#     x2 -= h
+#
+#     func = np.vectorize(f)
+#
+#     x1 = func(x1)
+#     x2 = func(x2)
+#
+#     grad = (x1 - x2) / (2 * h)
+#
+#     return grad
