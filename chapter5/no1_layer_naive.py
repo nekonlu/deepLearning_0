@@ -33,7 +33,7 @@ class AddLayer:
         dy = dout * 1
 
         return dx, dy
-#%%
+
 class Relu:
     def __init__(self):
         self.mask = None
@@ -49,7 +49,7 @@ class Relu:
         dout[self.mask] = 0
         dx = dout
 
-#%%
+
 class Sigmoid:
     def __init__(self):
         self.out = None
@@ -64,7 +64,7 @@ class Sigmoid:
         dx = dout * (1.0 - self.out) * self.out
 
         return dx
-#%%
+
 class Affine:
     def __init__(self, W, b):
         self.W = W
@@ -85,7 +85,7 @@ class Affine:
         self.db = np.sum(dout, axis=0)
 
         return dx
-#%%
+
 class SoftmaxWithLoss:
     def __init__(self):
         self.loss = None    # 損失
@@ -95,7 +95,6 @@ class SoftmaxWithLoss:
     def forward(self, x, t):
         self.t = t
         self.y = softmax(x)
-        print(self.y)
         self.loss = cross_entropy_error(self.y, self.t)
 
         return self.loss
@@ -105,12 +104,6 @@ class SoftmaxWithLoss:
         dx = (self.y - self.t) / batch_size
 
         return dx
-#%%
-
-#%%
-
-#%%
-
 #%%
 
 #%%
